@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Image.asset('images/letras.png'),
             Positioned(
-              top: 350,
+              top: 360,
               child: Opacity(
                 opacity: .5,
                 child: Container(
@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20)),
-                  height: 200,
+                  height: 170,
                   width: MediaQuery.of(context).size.width * .9,
                   child: ListView(
                     shrinkWrap: true,
@@ -71,19 +71,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       SignInButton(Buttons.Email, onPressed: () {
                         setState(() {
                           isLoading = !isLoading;
-
                         });
-                        Future.delayed(
-                          new Duration(milliseconds: 5000),
-                          (){
-                            Navigator.push(
+                        Future.delayed(new Duration(milliseconds: 5000), () {
+                          /*Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => new DashboardScreen()
                               )
-                            );
-                          }
-                        );
+                            );*/
+                          Navigator.pushNamed(context, "/dash").then((value) {
+                            setState(() {
+                              isLoading = !isLoading;
+                            });
+                          });
+                        });
                       }),
                       SignInButton(Buttons.Facebook, onPressed: () {}),
                       SignInButton(Buttons.GitHub, onPressed: () {}),
