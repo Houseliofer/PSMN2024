@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pmsn2024/screens/dashboard_screen.dart';
 import 'package:pmsn2024/screens/splash_screen.dart';
