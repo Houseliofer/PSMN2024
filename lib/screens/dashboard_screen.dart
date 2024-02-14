@@ -1,4 +1,6 @@
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:pmsn2024/settings/app_value_notifier.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -17,13 +19,13 @@ class DashboardScreen extends StatelessWidget {
                   backgroundImage: NetworkImage(
                       'https://cdn-icons-png.flaticon.com/512/1144/1144760.png'),
                 ),
-                accountName: const Text('Jebus Paredes Mora'),
-                accountEmail: const Text('20030392@itcelaya.edu.mx')),
+                accountName: Text('Jebus Paredes Mora'),
+                accountEmail: Text('20030392@itcelaya.edu.mx')),
             ListTile(
-              leading: const Icon(Icons.phone),
-              title: const Text('Practica 1'),
-              subtitle: const Text('Aqui iria la descripcion si tuviera aqui'),
-              trailing: const Icon(Icons.chevron_right),
+              leading: Icon(Icons.phone),
+              title: Text('Practica 1'),
+              subtitle: Text('Aqui iria la descripcion si tuviera aqui'),
+              trailing: Icon(Icons.chevron_right),
             ),
             ListTile(
               leading: const Icon(Icons.close),
@@ -33,6 +35,12 @@ class DashboardScreen extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pop(context);
+              },
+            ),
+            DayNightSwitcher(
+              isDarkModeEnabled: AppValueNotifier.banTheme.value,
+              onStateChanged: (isDarkModeEnabled) {
+                AppValueNotifier.banTheme.value = isDarkModeEnabled;
               },
             ),
           ],
