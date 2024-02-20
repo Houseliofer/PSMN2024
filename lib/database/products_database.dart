@@ -49,14 +49,13 @@ class ProductsDatabase {
 
   Future<int> ELIMINAR(int idProducto) async {
     var conexion = await database;
-    return conexion.delete(
-      'tblProductos',
-      where: 'idProducto = ?',
-      whereArgs: [idProducto]
-    );
+    return conexion.delete('tblProductos',
+        where: 'idProducto = ?', whereArgs: [idProducto]);
   }
 
-  Future<ProductosModel> CONSULTAR() async{
-    
-  }
+  Future<List<ProductosModel>> CONSULTAR() async {
+    var conexion = await database;
+    var products = await conexion.query('tblProductos');
+    return products.map((product) => ProductosModel.fromMap(product)).toList();
+    }
 }
