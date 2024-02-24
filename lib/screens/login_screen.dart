@@ -87,6 +87,34 @@ class _LoginScreenState extends State<LoginScreen> {
                       }),
                       SignInButton(Buttons.Facebook, onPressed: () {}),
                       SignInButton(Buttons.GitHub, onPressed: () {}),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/registro');
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.person_add,
+                            color: Colors.white,),
+                            Padding(
+                              padding: EdgeInsets.only(left: 50.0),
+                              child: Text(
+                                'Registrarse',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'RobotoMono'
+                                ),
+                              ),
+                            ),
+                            
+                          ],
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blueAccent,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(0.0)),
+                            textStyle: const TextStyle(fontSize: 14.0)),
+                      ),
                     ],
                   )),
             ),
