@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class registerScreen extends StatefulWidget {
   const registerScreen({super.key});
@@ -9,9 +12,10 @@ class registerScreen extends StatefulWidget {
 
 class _registerScreenState extends State<registerScreen> {
   final _formKey = GlobalKey<FormState>();
-
+  XFile? _imageFile;
   @override
   Widget build(BuildContext context) {
+    //------------------------------------TEXT FIELDS-----------------------------------
     final conEmail = TextEditingController();
     final conPass = TextEditingController();
     final conNombre = TextEditingController();
@@ -66,6 +70,8 @@ class _registerScreenState extends State<registerScreen> {
       child: Text('Registrarse'),
     );
 
+    //------------------------------------TEXT FIELDS-----------------------------------
+    //------------------------------------SCAFFOLD--------------------------------------
     return Scaffold(
         appBar: AppBar(
           title: Text("Registrarse"),
@@ -76,9 +82,61 @@ class _registerScreenState extends State<registerScreen> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              children: [txtEmail, txtPass, txtNombre, btnRegistrar],
+              children: [
+                GestureDetector(
+                  onTap: () => _mostrarOpcionesImagen(context),
+                  child: CircleAvatar(
+                    radius: 40.0,
+                    backgroundImage: _imageFile != null
+                        ? FileImage(File(_imageFile!.path)) as ImageProvider
+                        : null,
+                    child: _imageFile == null ? Icon(Icons.person) : null,
+                  ),
+                ),
+                txtEmail,
+                txtPass,
+                txtNombre,
+                btnRegistrar,
+              ],
             ),
           ),
         ));
+  }
+  //------------------------------------SCAFFOLD--------------------------------------
+  //------------------------------------METODOS---------------------------------------
+
+  void _mostrarOpcionesImagen(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            leading: Icon(Icons.camera),
+            title: Text('Tomar una foto'),
+            onTap: () async {
+              final XFile? image =
+                  await ImagePicker().pickImage(source: ImageSource.camera);
+              setState(() {
+                _imageFile = image;
+              });
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.image),
+            title: Text('Elegir una imagen de la galería'),
+            onTap: () async {
+              final XFile? image =
+                  await ImagePicker().pickImage(source: ImageSource.gallery);
+              setState(() {
+                _imageFile = image;
+              });
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
