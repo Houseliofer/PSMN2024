@@ -13,13 +13,26 @@ class registerScreen extends StatefulWidget {
 class _registerScreenState extends State<registerScreen> {
   final _formKey = GlobalKey<FormState>();
   XFile? _imageFile;
+  final conEmail = TextEditingController();
+  final conPass = TextEditingController();
+  final conNombre = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     //------------------------------------TEXT FIELDS-----------------------------------
-    final conEmail = TextEditingController();
-    final conPass = TextEditingController();
-    final conNombre = TextEditingController();
 
+    final txtPass = TextFormField(
+      controller: conPass,
+      decoration: InputDecoration(labelText: "Contraseña"),
+      obscureText: true,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Por favor, ingresa tu contraseña';
+        }
+        return null;
+      },
+    );
     final txtEmail = TextFormField(
       keyboardType: TextInputType.emailAddress,
       controller: conEmail,
@@ -31,18 +44,6 @@ class _registerScreenState extends State<registerScreen> {
                 r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9-]+\.[a-zA-Z]+")
             .hasMatch(value)) {
           return 'Correo electrónico no válido';
-        }
-        return null;
-      },
-    );
-
-    final txtPass = TextFormField(
-      controller: conPass,
-      decoration: InputDecoration(labelText: "Contraseña"),
-      obscureText: true,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Por favor, ingresa tu contraseña';
         }
         return null;
       },
