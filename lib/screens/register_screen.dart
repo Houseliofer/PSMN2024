@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pmsn2024/services/email_auth_firebase.dart';
 
 class registerScreen extends StatefulWidget {
   const registerScreen({super.key});
@@ -11,12 +12,13 @@ class registerScreen extends StatefulWidget {
 }
 
 class _registerScreenState extends State<registerScreen> {
+  final auth_firebase = EmailAuthFirebase();
+
   final _formKey = GlobalKey<FormState>();
   XFile? _imageFile;
   final conEmail = TextEditingController();
   final conPass = TextEditingController();
   final conNombre = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +65,20 @@ class _registerScreenState extends State<registerScreen> {
     final btnRegistrar = ElevatedButton(
       onPressed: () {
         if (_formKey.currentState!.validate()) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Usuario registrado correctamente')),
-          );
+          auth_firebase
+              .signUpUser(
+                  name: conNombre.text,
+                  password: conPass.text,
+                  email: conEmail.text)
+              .then((value) {
+            if (value) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Usuario registrado correctamente')),
+              );
+
+              Navigator.pop(context);
+            }
+          });
         }
       },
       child: Text('Registrarse'),

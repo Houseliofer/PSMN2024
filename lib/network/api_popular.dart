@@ -5,7 +5,7 @@ import 'package:pmsn2024/model/popular_model.dart';
 
 class ApiPopular {
   final URL =
-      "https://api.themoviedb.org/3/movie/popular?api_key=73c295392359efe7df0a34433173fd7e&language=es-MX&page=1";
+      "https://api.themoviedb.org/3/movie/popular?api_key=6485bbf12ef20840ab3cf462c8cac566&language=es-MX&page=1";
   final dio = Dio();
   Future<List<PopularModel>?> getPopularMovie() async {
     Response response = await dio.get(URL);
