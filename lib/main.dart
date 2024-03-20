@@ -4,6 +4,7 @@ import 'package:pmsn2024/screens/dashboard_screen.dart';
 import 'package:pmsn2024/screens/despensa_screen.dart';
 import 'package:pmsn2024/screens/detail_movie_screen.dart';
 import 'package:pmsn2024/screens/popular_movies_screen.dart';
+import 'package:pmsn2024/screens/products_firebase_screen.dart';
 import 'package:pmsn2024/screens/register_screen.dart';
 import 'package:pmsn2024/screens/splash_screen.dart';
 import 'package:pmsn2024/settings/app_value_notifier.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
                 "/registro": (BuildContext context) => registerScreen(),
                 "/movies": (BuildContext context) => PopularMoviesScreen(),
                 "/detail": (BuildContext context) => DetailMovieScreen(),
+                "/products": (BuildContext context) => ProductsFirebaseScreen(),
               },
               debugShowCheckedModeBanner: false);
         });
