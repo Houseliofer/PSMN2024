@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
                 "/registro": (BuildContext context) => registerScreen(),
                 "/movies": (BuildContext context) => PopularMoviesScreen(),
                 "/detail": (BuildContext context) => DetailMovieScreen(),
-                "/products": (BuildContext context) => ProductsFirebaseScreen(),
+                "/productos": (BuildContext context) => ProductsFirebaseStream(),
               },
               debugShowCheckedModeBanner: false);
         });

@@ -28,6 +28,13 @@ class DashboardScreen extends StatelessWidget {
               trailing: Icon(Icons.chevron_right),
             ),
             ListTile(
+              leading: Icon(Icons.store),
+              title: Text('Productos'),
+              subtitle: Text('Productos de Firebase'),
+              trailing: Icon(Icons.chevron_right),
+              onTap: () => Navigator.pushNamed(context, '/productos'),
+            ),
+            ListTile(
               leading: Icon(Icons.movie),
               title: Text('Movies app'),
               subtitle: Text('Peliculas populares'),

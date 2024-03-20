@@ -4,7 +4,9 @@ class EmailAuthFirebase {
   final auth = FirebaseAuth.instance;
 
   Future<bool> signUpUser(
-      {required name, required password, required String email}) async {
+      {required name, 
+      required password, 
+      required String email}) async {
     try {
       final userCredential = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -19,18 +21,16 @@ class EmailAuthFirebase {
     }
   }
 
-  Future<bool> signInUser({required password, required String email}) async {
-    var flag = false;
-
-    final userCredential =
+  Future<bool> signInUser(
+      {required String password, required String email}) async {
+    var band = false;
+    final UserCredential =
         await auth.signInWithEmailAndPassword(email: email, password: password);
-
-    if (userCredential.user != null) {
-      if (userCredential.user!.emailVerified) {
-        flag = true;
+    if (UserCredential.user != null) {
+      if (UserCredential.user!.emailVerified) {
+        band = true;
       }
     }
-
-    return flag;
+    return band;
   }
 }
