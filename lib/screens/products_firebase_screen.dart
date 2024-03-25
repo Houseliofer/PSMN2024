@@ -17,7 +17,7 @@ class _ProductsFirebaseState extends State<ProductsFirebaseStream> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.store),
-        onPressed: () => Navigator.pushNamed(context, '/despensa'),
+        onPressed: () => showModal(context),
       ),
       appBar: AppBar(
         title: Text('Hola'),
@@ -64,7 +64,15 @@ class _ProductsFirebaseState extends State<ProductsFirebaseStream> {
     );
 
     final btnAgregar = ElevatedButton.icon(
-        onPressed: () {}, icon: Icon(Icons.save), label: Text('Guardar'));
+        onPressed: () {
+          productsFirebase.insertar({
+            'cantidad': conCantidad.text,
+            'fecha': conFecha.text,
+            'imagen':
+                "https://chedrauimx.vtexassets.com/arquivos/ids/27717854/41789001857_01.jpg?v=638460402513400000",
+            'nombre_producto': conNombre.text
+          });
+        }, icon: Icon(Icons.save), label: Text('Guardar'));
 
     final space = SizedBox(
       height: 10,
