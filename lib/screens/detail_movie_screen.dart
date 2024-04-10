@@ -168,6 +168,7 @@ class _DetailMovieScreenState extends State<DetailMovieScreen>
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              Text(_popularModel.title??''),
               IconButton(
                 onPressed: _toggleFavorite,
                 icon: Icon(

@@ -4,6 +4,7 @@ import 'package:pmsn2024/screens/dashboard_screen.dart';
 import 'package:pmsn2024/screens/despensa_screen.dart';
 import 'package:pmsn2024/screens/detail_movie_screen.dart';
 import 'package:pmsn2024/screens/favorites_movies_screen.dart';
+import 'package:pmsn2024/screens/map_screen.dart';
 import 'package:pmsn2024/screens/popular_movies_screen.dart';
 import 'package:pmsn2024/screens/products_firebase_screen.dart';
 import 'package:pmsn2024/screens/register_screen.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
                 "/detail": (BuildContext context) => DetailMovieScreen(),
                 "/productos": (BuildContext context) => ProductsFirebaseStream(),
                 "/favorite":(BuildContext context) => const FavoriteMovieScreen(),
+                "/map":(BuildContext context) => const MapSample(),
               },
               debugShowCheckedModeBanner: false);
         });
