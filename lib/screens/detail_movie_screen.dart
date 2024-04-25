@@ -210,7 +210,6 @@ class _DetailMovieScreenState extends State<DetailMovieScreen>
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.black,
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
@@ -236,7 +235,6 @@ class _DetailMovieScreenState extends State<DetailMovieScreen>
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.black,
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
@@ -262,7 +260,6 @@ class _DetailMovieScreenState extends State<DetailMovieScreen>
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.black,
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
